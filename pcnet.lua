@@ -20,10 +20,7 @@ train = {
 
 -- nn.StochasticGradient requires that the training set have an index
 setmetatable(train, 
-	{__index = function(t, i) 
-						   return { t.data[i], t.label[i] } 
-						 end}
-);
+	{__index = function(t, i) return { t.data[i], t.label[i] } end} );
 
 -- nn.StochasticGradient requires that the training set return size
 function train:size() return self.data:size(1) end
@@ -35,10 +32,7 @@ validate = {
 }
 
 setmetatable(validate, 
-	{__index = function(t, i) 
-						   return { t.data[i], t.label[i]} 
-						 end}
-);
+	{__index = function(t, i) return { t.data[i], t.label[i]} end} );
 
 function validate:size() return self.data:size(1) end
 
@@ -149,10 +143,7 @@ test = {
 }
 
 setmetatable(test,
-  {__index = function(t, i)
-               return { t.data[i] }
-             end}
-);
+  {__index = function(t, i) return { t.data[i] } end} );
 
 function test:size() return self.data:size(1) end
 
@@ -201,5 +192,4 @@ for i=1,28000 do
   file:write("\n")
 end
 file:close()
-
 
